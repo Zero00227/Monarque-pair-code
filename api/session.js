@@ -14,3 +14,4 @@ export default handle(async (req, res) => {
   if (!rec) return json(res, 404, { error: 'Session introuvable, expirée ou déjà utilisée. Refaites un pairing sur le site.' });
   json(res, 200, { creds: rec.creds, number: rec.number });
 });
+                      
