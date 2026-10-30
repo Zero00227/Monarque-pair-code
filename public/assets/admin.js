@@ -71,3 +71,4 @@ $('logout').onclick = async () => { await fetch('/api/admin', { method: 'POST', 
 $('refresh').onclick = load;
 $('reveal').onchange = render;
 load();
+                            
