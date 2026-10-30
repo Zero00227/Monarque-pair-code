@@ -17,13 +17,13 @@ function drawChart(days) {
   const max = Math.max(4, ...days.map((d) => d.attempts), ...days.map((d) => d.ok));
   const y = (v) => H - pad.b - (v / max) * (H - pad.b - pad.t);
   let g = '';
-  for (const t of [0, Math.round(max / 2), max]) g += `<line x1="${pad.l}" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="#272052"/><text x="0" y="${y(t) + 4}" fill="#a8a2c8" font-size="11">${t}</text>`;
+  for (const t of [0, Math.round(max / 2), max]) g += `<line x1="${pad.l}" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="#183070"/><text x="0" y="${y(t) + 4}" fill="#8fa3d6" font-size="11">${t}</text>`;
   days.forEach((d, i) => {
     const x = pad.l + i * bw + bw * 0.18, w = bw * 0.64;
     g += `<g><title>${d.date} : ${d.ok} lié(s) sur ${d.attempts} demande(s)</title>` +
-      `<rect x="${x}" y="${y(d.attempts)}" width="${w}" height="${H - pad.b - y(d.attempts)}" rx="3" fill="#272052"/>` +
-      `<rect x="${x + w * 0.2}" y="${y(d.ok)}" width="${w * 0.6}" height="${H - pad.b - y(d.ok)}" rx="3" fill="#e9c46a"/>` +
-      `<text x="${x + w / 2}" y="${H - 6}" fill="#a8a2c8" font-size="11" text-anchor="middle">${d.date.slice(8)}</text></g>`;
+      `<rect x="${x}" y="${y(d.attempts)}" width="${w}" height="${H - pad.b - y(d.attempts)}" rx="3" fill="#183070"/>` +
+      `<rect x="${x + w * 0.2}" y="${y(d.ok)}" width="${w * 0.6}" height="${H - pad.b - y(d.ok)}" rx="3" fill="#35d6ff"/>` +
+      `<text x="${x + w / 2}" y="${H - 6}" fill="#8fa3d6" font-size="11" text-anchor="middle">${d.date.slice(8)}</text></g>`;
   });
   $('chart').innerHTML = g;
 }
@@ -71,4 +71,3 @@ $('logout').onclick = async () => { await fetch('/api/admin', { method: 'POST', 
 $('refresh').onclick = load;
 $('reveal').onchange = render;
 load();
-                                                                                                
