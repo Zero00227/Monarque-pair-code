@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pairing code Monarque MD</title>
+<meta name="description" content="Obtenez votre pairing code et votre Session ID pour déployer Monarque MD sur votre WhatsApp.">
+<meta name="theme-color" content="#15112b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e9c46a' d='M2.5 8.5 7 12l5-7 5 7 4.5-3.5L20 18H4z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 8.5 7 12l5-7 5 7 4.5-3.5L20 18H4z"/><rect x="4" y="19.5" width="16" height="2" rx="1"/></svg> Monarque MD</a>
+    <span class="live" id="live" hidden><i></i><span id="liveTxt"></span></span>
+  </header>
+
+  <main class="grid">
+    <section>
+      <h1>Liez votre WhatsApp en moins d'une minute</h1>
+      <p class="lead">Entrez votre numéro, recevez un code à 8 caractères et saisissez-le dans WhatsApp. Votre Session ID arrive ensuite dans vos messages : c'est lui qui connecte le bot à votre compte.</p>
+      <p class="count" id="count"></p>
+      <ol class="steps">
+        <li><span><strong>Entrez votre numéro</strong> avec l'indicatif du pays, puis demandez le code.</span></li>
+        <li><span><strong>Saisissez le code dans WhatsApp</strong> : Paramètres, Appareils connectés, Connecter un appareil, puis « Connecter avec le numéro de téléphone ».</span></li>
+        <li><span><strong>Collez le Session ID</strong> dans la variable SESSION_ID de votre hébergeur (Katabump, Bot-Hosting...) et démarrez le bot.</span></li>
+      </ol>
+    </section>
+
+    <section class="panel" aria-live="polite">
+      <!-- Étape 1 : formulaire -->
+      <div id="v-form">
+        <h2>Obtenir mon code</h2>
+        <p>Le numéro doit être celui du WhatsApp que vous voulez connecter.</p>
+        <label for="num">Numéro WhatsApp</label>
+        <div class="field"><span>+</span><input id="num" type="tel" inputmode="numeric" autocomplete="tel" placeholder="22790123456" maxlength="20"></div>
+        <p class="hint">Indicatif du pays inclus, sans le 0 initial ni espaces.</p>
+        <button class="primary" id="go">Obtenir mon code</button>
+        <p class="err" id="err" role="alert"></p>
+      </div>
+
+      <!-- Étape 2 : code -->
+      <div id="v-code" hidden>
+        <h2>Saisissez ce code dans WhatsApp</h2>
+        <div class="code" id="code" aria-label="Pairing code"></div>
+        <div class="timer"><i id="bar"></i></div>
+        <div class="status"><span class="spin"></span><span id="stTxt">En attente de votre saisie dans WhatsApp...</span></div>
+        <div class="row"><button class="ghost" id="copyCode">Copier le code</button><button class="ghost" id="cancel">Annuler</button></div>
+        <div class="how">Sur votre téléphone : <b>WhatsApp, Paramètres, Appareils connectés, Connecter un appareil, Connecter avec le numéro de téléphone</b>, puis saisissez le code.</div>
+      </div>
+
+      <!-- Étape 3 : terminé -->
+      <div id="v-done" hidden>
+        <h2>Appareil lié</h2>
+        <p id="sentTxt"></p>
+        <code class="sid" id="sid"></code>
+        <button class="primary" id="copySid">Copier le Session ID</button>
+        <div class="how"><b>Dernière étape :</b> collez cet ID dans la variable <b>SESSION_ID</b> de votre panel, puis démarrez le bot. Il est à usage unique et expire dans 24 h. Ne le partagez avec personne.</div>
+        <p style="margin:1rem 0 0"><button class="ghost" id="again" style="width:100%">Lier un autre numéro</button></p>
+      </div>
+
+      <!-- Échec -->
+      <div id="v-fail" hidden>
+        <h2>Code non validé</h2>
+        <p class="err" id="failTxt" style="margin-top:.5rem"></p>
+        <button class="primary" id="retry">Générer un nouveau code</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>Monarque MD. Vos identifiants ne sont conservés que le temps de démarrer votre bot. <a href="/admin">Admin</a></footer>
+</div>
+<script src="/assets/app.js"></script>
+</body>
+</html>
