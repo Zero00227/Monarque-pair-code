@@ -37,3 +37,4 @@ export default handle(async (req, res) => {
   }
   json(res, 200, { rid, code: r.code, expiresIn: 120 });
 });
+               
