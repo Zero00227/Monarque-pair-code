@@ -11,3 +11,4 @@ export default handle(async (req, res) => {
     sessionId: s.state === 'done' ? s.sessionId : undefined, sent: s.sent,
   });
 });
+    
