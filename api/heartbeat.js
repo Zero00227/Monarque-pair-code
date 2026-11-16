@@ -16,4 +16,3 @@ export default handle(async (req, res) => {
   else await db.zadd(K.seen, { score: Date.now(), member: rec.n });
   json(res, 200, { ok: true });
 });
-  
