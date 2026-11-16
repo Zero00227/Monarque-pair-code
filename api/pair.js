@@ -3,6 +3,7 @@ import { waitUntil } from '@vercel/functions';
 import { getDb, K, dayKey, rateLimit } from '../lib/db.js';
 import { json, handle, clientIp, normalizeNumber } from '../lib/http.js';
 import { runPairing, patchState } from '../lib/pairing.js';
+import { hostedMode, hostCapacity } from '../lib/host.js';
 
 export default handle(async (req, res) => {
   if (req.method !== 'POST') return json(res, 405, { error: 'Méthode non autorisée.' });
@@ -10,6 +11,11 @@ export default handle(async (req, res) => {
 
   const number = normalizeNumber(req.body?.number);
   if (!number) return json(res, 400, { error: 'Numéro invalide. Indiquez l\'indicatif du pays, sans + ni 0 (ex : 22790123456).' });
+
+  // Mode hébergé : refuse un NOUVEAU numéro si le serveur du bot est plein (un numéro déjà hébergé peut se re-lier).
+  if (hostedMode() && hostCapacity() > 0 && (await db.zscore(K.hosted, number)) === null
+      && (await db.zcard(K.hosted)) >= hostCapacity())
+    return json(res, 503, { error: 'Le bot est complet pour le moment. Réessayez plus tard.' });
 
   // Anti-abus : chaque demande déclenche une notification sur le téléphone ciblé.
   if (!(await rateLimit(db, K.rl('pair-ip', clientIp(req)), 6, 600)))
@@ -37,4 +43,4 @@ export default handle(async (req, res) => {
   }
   json(res, 200, { rid, code: r.code, expiresIn: 120 });
 });
-               
+  
