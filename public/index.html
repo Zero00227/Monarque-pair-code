@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>饾憖猸曫潙侌潗答潙咅潗娥潗� 饾憖饾惙 : Pairing WhatsApp</title>
-<meta name="description" content="Connectez votre WhatsApp 脿 饾憖猸曫潙侌潗答潙咅潗娥潗� 饾憖饾惙 : entrez votre num茅ro, saisissez le code, le bot d茅marre sur votre compte. Rien 脿 installer.">
+<title>𝑀⭕𝑁𝐴𝑅𝐶𝐻 𝐵𝑂𝑇 : Pairing WhatsApp</title>
+<meta name="description" content="Connectez votre WhatsApp à 𝑀⭕𝑁𝐴𝑅𝐶𝐻 𝐵𝑂𝑇 : entrez votre numéro, saisissez le code, le bot démarre sur votre compte. Rien à installer.">
 <meta name="theme-color" content="#050a1c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2335d6ff' d='M2.5 8.5 7 12l5-7 5 7 4.5-3.5L20 18H4z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
     <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 9" stroke-linecap="round"/></svg>
     <svg class="crown" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 8.5 7 12l5-7 5 7 4.5-3.5L20 18H4z"/><rect x="4" y="19.5" width="16" height="2" rx="1"/></svg>
   </div>
-  <h1 class="neon">饾憖猸曫潙侌潗答潙咅潗娥潗� 饾憖饾惙</h1>
+  <h1 class="neon">𝑀⭕𝑁𝐴𝑅𝐶𝐻 𝐵𝑂𝑇</h1>
   <p class="sub">Bot WhatsApp multi-appareils</p>
   <div class="badge"><i></i><span id="pillTxt">Chargement...</span></div>
   <p class="online" id="onlineTxt"></p>
@@ -25,10 +25,10 @@
   <section class="panel" aria-live="polite">
     <!-- Formulaire -->
     <div id="v-form">
-      <h2>Liez votre num茅ro WhatsApp</h2>
+      <h2>Liez votre numéro WhatsApp</h2>
       <label for="cty">Pays</label>
       <select id="cty"></select>
-      <label for="num">Num茅ro WhatsApp</label>
+      <label for="num">Numéro WhatsApp</label>
       <div class="numrow">
         <div class="dial" id="dial">+</div>
         <div class="field"><input id="num" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="90123456" maxlength="16"></div>
@@ -45,38 +45,38 @@
       <div class="timer"><i id="bar"></i></div>
       <div class="status"><span class="spin"></span><span id="stTxt">En attente de votre saisie dans WhatsApp...</span></div>
       <div class="row"><button class="ghost" id="copyCode">Copier le code</button><button class="ghost" id="cancel">Annuler</button></div>
-      <div class="how">Sur votre t茅l茅phone : <b>WhatsApp, Param猫tres, Appareils connect茅s, Connecter un appareil, Connecter avec le num茅ro de t茅l茅phone</b>, puis saisissez le code.</div>
+      <div class="how">Sur votre téléphone : <b>WhatsApp, Paramètres, Appareils connectés, Connecter un appareil, Connecter avec le numéro de téléphone</b>, puis saisissez le code.</div>
     </div>
 
-    <!-- Termin茅 -->
+    <!-- Terminé -->
     <div id="v-done" hidden>
-      <h2 id="doneTitle">Appareil li茅</h2>
+      <h2 id="doneTitle">Appareil lié</h2>
       <p id="sentTxt"></p>
       <div id="hostBox" hidden>
-        <div class="how"><b>C'est termin茅.</b> Votre bot d茅marre sur votre WhatsApp (environ 30 secondes). Envoyez <b>.menu</b> dans n'importe quelle discussion, par exemple dans 芦 Moi-m锚me 禄, pour voir les commandes.<br><br>Par d茅faut, vous seul pouvez les utiliser. Pour arr锚ter le bot : <b>WhatsApp, Appareils connect茅s, D茅connecter</b>.</div>
+        <div class="how"><b>C'est terminé.</b> Votre bot démarre sur votre WhatsApp (environ 30 secondes). Envoyez <b>.menu</b> dans n'importe quelle discussion, par exemple dans « Moi-même », pour voir les commandes.<br><br>Par défaut, vous seul pouvez les utiliser. Pour arrêter le bot : <b>WhatsApp, Appareils connectés, Déconnecter</b>.</div>
       </div>
       <div id="sidBox" hidden>
         <code class="sid" id="sid"></code>
         <button class="primary" id="copySid">Copier le Session ID</button>
-        <div class="how"><b>Derni猫re 茅tape :</b> collez cet ID dans la variable <b>SESSION_ID</b> de votre panel, puis d茅marrez le bot. Il est 脿 usage unique et expire dans 24 h. Ne le partagez avec personne.</div>
+        <div class="how"><b>Dernière étape :</b> collez cet ID dans la variable <b>SESSION_ID</b> de votre panel, puis démarrez le bot. Il est à usage unique et expire dans 24 h. Ne le partagez avec personne.</div>
       </div>
-      <p style="margin:1rem 0 0"><button class="ghost" id="again" style="width:100%">Lier un autre num茅ro</button></p>
+      <p style="margin:1rem 0 0"><button class="ghost" id="again" style="width:100%">Lier un autre numéro</button></p>
     </div>
 
-    <!-- 脡chec -->
+    <!-- Échec -->
     <div id="v-fail" hidden>
-      <h2>Code non valid茅</h2>
+      <h2>Code non validé</h2>
       <p class="err" id="failTxt" style="margin-top:.5rem"></p>
-      <button class="primary" id="retry">G茅n茅rer un nouveau code</button>
+      <button class="primary" id="retry">Générer un nouveau code</button>
     </div>
   </section>
 
   <ol class="steps">
-    <li><span><strong>Choisissez votre pays</strong> et entrez votre num茅ro, puis demandez le code.</span></li>
-    <li><span><strong>Saisissez le code dans WhatsApp</strong> (Appareils connect茅s, puis 芦 Connecter avec le num茅ro de t茅l茅phone 禄).</span></li>
-    <li><span id="step3"><strong>Envoyez .menu sur WhatsApp</strong> : le bot r茅pond depuis votre compte, sans rien installer ni d茅ployer.</span></li>
+    <li><span><strong>Choisissez votre pays</strong> et entrez votre numéro, puis demandez le code.</span></li>
+    <li><span><strong>Saisissez le code dans WhatsApp</strong> (Appareils connectés, puis « Connecter avec le numéro de téléphone »).</span></li>
+    <li><span id="step3"><strong>Envoyez .menu sur WhatsApp</strong> : le bot répond depuis votre compte, sans rien installer ni déployer.</span></li>
   </ol>
-  <footer><span id="foot">Votre session est stock茅e chiffr茅e pour faire tourner votre bot. Retirez l'appareil dans WhatsApp 脿 tout moment pour la supprimer.</span> <a href="/admin">Admin</a></footer>
+  <footer><span id="foot">Votre session est stockée chiffrée pour faire tourner votre bot. Retirez l'appareil dans WhatsApp à tout moment pour la supprimer.</span> <a href="/admin">Admin</a></footer>
 </main>
 <script src="/assets/app.js"></script>
 </body>
