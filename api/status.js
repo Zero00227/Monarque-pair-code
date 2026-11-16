@@ -8,7 +8,6 @@ export default handle(async (req, res) => {
   if (!s) return json(res, 404, { state: 'unknown' });
   json(res, 200, {
     state: s.state, code: s.code, codeAt: s.codeAt, error: s.error,
-    sessionId: s.state === 'done' ? s.sessionId : undefined, sent: s.sent,
+    sessionId: s.state === 'done' ? s.sessionId : undefined, sent: s.sent, hosted: s.hosted === true,
   });
 });
-    
