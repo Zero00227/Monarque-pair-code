@@ -139,4 +139,4 @@ api('/api/stats').then(({ ok, data }) => {
   $('pillTxt').textContent = `${n(data.total)} appareil${data.total > 1 ? 's' : ''} lié${data.total > 1 ? 's' : ''}`;
   if (data.online > 0) $('onlineTxt').innerHTML = `<b>${n(data.online)}</b> en ligne en ce moment`;
 }).catch(() => { $('pillTxt').textContent = 'Service actif'; });
-                                                                                                                                                                   
+  
