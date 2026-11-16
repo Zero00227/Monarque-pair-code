@@ -74,10 +74,20 @@ async function check() {
   if (s === 'linking' || s === 'linked') $('stTxt').textContent = 'Code accepté. Finalisation de la connexion...';
   if (s === 'done') {
     stop(); sessionStorage.removeItem('mq_rid');
-    $('sid').textContent = data.sessionId;
-    $('sentTxt').textContent = data.sent
-      ? 'Votre Session ID a aussi été envoyé dans votre discussion avec vous-même sur WhatsApp.'
-      : 'Copiez votre Session ID ci-dessous : l\'envoi sur WhatsApp n\'a pas abouti.';
+    $('hostBox').hidden = !data.hosted;
+    $('sidBox').hidden = Boolean(data.hosted);
+    if (data.hosted) {
+      $('doneTitle').textContent = 'Bot connecté';
+      $('sentTxt').textContent = data.sent
+        ? 'Un message de confirmation vient d\'arriver dans votre discussion avec vous-même sur WhatsApp.'
+        : 'Votre compte est lié.';
+    } else {
+      $('doneTitle').textContent = 'Appareil lié';
+      $('sid').textContent = data.sessionId;
+      $('sentTxt').textContent = data.sent
+        ? 'Votre Session ID a aussi été envoyé dans votre discussion avec vous-même sur WhatsApp.'
+        : 'Copiez votre Session ID ci-dessous : l\'envoi sur WhatsApp n\'a pas abouti.';
+    }
     show('done'); return;
   }
   if (s === 'failed' || s === 'expired') return fail(data.error);
@@ -122,7 +132,11 @@ if (rid) check();
 api('/api/stats').then(({ ok, data }) => {
   const n = (x) => Number(x).toLocaleString('fr-FR');
   if (!ok) { $('pillTxt').textContent = 'Service actif'; return; }
+  if (data.hosted === false) {   // mode Session ID (sans bot hébergé) : textes d'origine
+    $('step3').innerHTML = '<strong>Collez le Session ID</strong> dans la variable SESSION_ID de votre hébergeur et démarrez le bot.';
+    $('foot').textContent = 'Vos identifiants ne sont conservés que le temps de démarrer votre bot.';
+  }
   $('pillTxt').textContent = `${n(data.total)} appareil${data.total > 1 ? 's' : ''} lié${data.total > 1 ? 's' : ''}`;
   if (data.online > 0) $('onlineTxt').innerHTML = `<b>${n(data.online)}</b> en ligne en ce moment`;
 }).catch(() => { $('pillTxt').textContent = 'Service actif'; });
-    
+                                                                                                                                                                   
